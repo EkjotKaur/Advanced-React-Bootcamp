@@ -93,3 +93,108 @@ npm i clean-webpack-plugin -D
 Rendering 
 https://github.com/chentsulin/awesome-react-renderer
 
+=======================
+
+JavaScript is dynamically typed
+var name = "Sam"; // string
+name.toUpperCase();
+var age = 24;
+age++;
+
+
+TypeScript
+
+* Optional TypeSystem to JavaScript
+* Statically typed
+* code quanlity and understandablity
+* early detection of errors
+
+TypeScript Compiler
+npm i -g typescript 
+tsc --version
+Version 5.2.2
+
+Types:
+1) string
+2) number
+3) boolean
+4) any
+5) unknown
+6) type
+7) interface
+
+Basic types: string, number, boolean
+
+let name:string = "Peter";
+
+```
+function doTask() {
+    cond1
+    return "data";
+    cond2
+    return 404;
+    cond3
+    return {
+
+    }
+}
+
+let data:any = doTask();
+```
+
+Type type is to declare shape of object
+? --> optional
+```
+type Product = {
+    id: number,
+    name: string,
+    price?: number
+}
+
+function addProduct(product:Product) : void {
+
+}
+addProduct({id: 1, name: 'P1', price: 311.11}); //valid
+addProduct({id: 1, name: 'P1'}); // valid
+```
+
+interface can be used instead of 'type' to define a shape
+* can be also used for realization relationship
+* can extend
+
+```
+interface Product {
+    id: number,
+    name: string,
+    price?: number
+}
+// inheritance
+interface Mobile extends Product {
+    camera:string,
+    connectivity:string
+}
+
+interface Tv extends Product {
+    screenType: string
+}
+
+interface Renderer {
+    render();
+}
+
+// Realization
+class TvRenderer extends Renderer {
+    render() {
+        //
+    }
+    other code
+}
+// Realization
+class DomRenderer extends Renderer {
+    render() {
+        //
+    }
+    other code
+}
+```
+
