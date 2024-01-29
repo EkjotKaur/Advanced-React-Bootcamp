@@ -6,6 +6,7 @@ module.exports = function (__env, argv) {
 
     // }
     return {
+        devtool: 'cheap-module-source-map',
         entry: './src/index.js',
         output: {
             path: path.resolve(__dirname, 'public'),
