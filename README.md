@@ -210,6 +210,17 @@ Keywords: "as", "is", "in"
 
 Type Predicate functions
 
+ tsc typepredicate.ts 
+ node typepredicate.js
 =========
+tsc lib.ts
+node lib.js
+instead:
+
+npx ts-node lib.ts
+
+
+
+
 
 
