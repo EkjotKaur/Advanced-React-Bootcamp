@@ -27,3 +27,36 @@ function transformToDiv(p) {
 
 let cards = map(products, transformToDiv)
 cards.forEach(card => console.log(card));
+
+let React = {
+    createElement: (tag, props, ...children) => {
+        var element = {tag, props: {...props, children}}
+        console.log(element);
+        return element;
+    }
+}
+
+let Product = <div className='card'>
+    <h1 className='header'>
+        iPhone 14
+    </h1>
+    <p>
+        Rs. 89000.00
+    </p>
+</div>
+
+function render(element, container) {
+    if(['string', 'number'].includes(typeof element)) {
+        container.appendChild(document.createTextNode(String(element)))
+        return;
+    }
+
+    let domElement = document.createElement(element.tag);
+    if(element.props.children) {
+        element.props.children.forEach(child => render(child, domElement))
+    }
+    container.appendChild(domElement);
+    console.log(container);
+}
+
+render(Product, document.getElementById("root"))
