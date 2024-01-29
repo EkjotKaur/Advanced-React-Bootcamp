@@ -1,6 +1,7 @@
 const webpack = require('webpack'); // CommonJS module system
 const path = require('path');
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const  HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = function (__env, argv) {
     // if(argv.mode === 'production') {
 
@@ -34,7 +35,9 @@ module.exports = function (__env, argv) {
         },
         plugins: [new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "public/index.html")
-        })],
+        }),
+            // new CleanWebpackPlugin()
+        ],
         devServer: {
             port: 1234
         }
