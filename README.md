@@ -122,6 +122,7 @@ Types:
 5) unknown
 6) type
 7) interface
+8) class
 
 Basic types: string, number, boolean
 
@@ -183,18 +184,32 @@ interface Renderer {
 }
 
 // Realization
-class TvRenderer extends Renderer {
+class TvRenderer implements Renderer {
     render() {
         //
     }
     other code
 }
 // Realization
-class DomRenderer extends Renderer {
+class DomRenderer implements Renderer {
     render() {
         //
     }
     other code
 }
 ```
+
+let course: string|number;
+
+course = 234;
+course = "ReactJS";
+
+=======
+
+Keywords: "as", "is", "in"
+
+Type Predicate functions
+
+=========
+
 
