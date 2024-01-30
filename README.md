@@ -400,3 +400,124 @@ update.apply(product, ["iPhone"]);
 update.call(user, "Peter");
 
 ```
+
+TypeScript Utility:
+
+1) Partial<Type>
+2) Readonly<Type>
+3) Omit
+4) Pick
+
+interface Product {
+    id:number,
+    name: string,
+    price: number,
+    description: string
+}
+
+function printProduct(product:Readonly<Product>) {
+    product.price = 99999; // error
+}
+
+function addProduct(product:Product) {
+
+}
+function updateProduct(product:Partial<Product>) {
+    Object.keys(product)
+}
+
+updateProduct({id: 1, price: 8000});
+
+type ProductDTO = Omit<Product, "description">;
+type json = {
+    product:Product[]
+}
+json: Partial<ResponseType>
+
+5) Record --> Dictionary key-value pairs, fixed number of keys
+
+type Course = "React" | "NodeJS" | "Angular"
+
+interface CourseInfo {
+    duration: number,
+    trainer: string
+}
+
+const courses: Record<Course, CourseInfo> = {
+    "React": {
+        duration: 48,
+        trainer: "A"
+    },
+     "NodeJS": {
+        duration: 48,
+        trainer: "B"
+    },
+     "Angular": {
+        duration: 48,
+        trainer: "C"
+    },
+
+}
+
+6) ReturnType
+
+function getData(a)  {
+    return parseInt(a);
+}
+
+async function getUser(): Promise<{
+        id: number,
+        name: string
+    }> {
+    return { id: 12, name: 'Peter'}
+}
+
+type A = ReturnType<typeof getData>; // number
+
+let data:A = getData("65");
+
+type P = ReturnType<typeof getUser>; // Promise
+type User = Awaited<ReturnType<typeof getUser>>; // {id: number, name: string}
+
+=======
+
+1) Create React Application using TypeScript with hooks, React Context for State management, react-router-dom, react-bootstrap, Spectrum, React WebComponents, ...
+2) State management --> Context to Redux Toolkit
+3) State Management --> Context to Mobx
+4) State management --> Context to MST
+
+======
+
+axios for Api call
+https://fakestoreapi.com/products?limit=5
+
+
+React Context: Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+=====
+
+npx create-react-app productapp --template typescript
+
+// hook useState
+```
+ const [count, setCount] = useState<number>(0);
+
+class App extends Component {
+    state = {
+        count: 0
+    }
+
+    setCount(no) {
+        this.setState({
+            count: no
+        })
+    }
+}
+```
+
+React 18 concurrency uses Fiber architecture instead of Stack
+
+performUnitOfWork
+beginWork
+completeWork
+completeRootImpl
