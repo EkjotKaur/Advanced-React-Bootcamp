@@ -1,7 +1,7 @@
 import { Component } from "./decorators/Component";
 
 @Component({
-    selector:'app-user',
+    selector: 'app-user',
     template: `
     <div>
         {{firstName}}
@@ -9,7 +9,7 @@ import { Component } from "./decorators/Component";
     `
 })
 export default class UserComponent {
-    private firstName: string = "Peter";
+    firstName: string = "Peter";
     get name() {
         return this.firstName;
     }

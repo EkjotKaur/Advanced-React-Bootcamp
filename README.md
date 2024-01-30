@@ -335,6 +335,10 @@ function Component(constructor:Function) {}
 2) method level
 function methodDecorator(target:any, methodName:string, descriptor?:PropertyDescriptor){}
 
+function log(target:any, methodName:string, descriptor?:PropertyDescriptor){
+    console.log(methodName + " called ");
+}
+
 class Demo {
     @log
     doTask() {
@@ -373,3 +377,26 @@ Requirement:
 class BookStore {
     books:Book[] = [];
 }
+
+========
+
+```
+function update(name) {
+    this.name = name;
+}
+
+let product = {
+    name: 'A',
+    price: 122;
+}
+
+let user = {
+    email : "a@gmail.com",
+    name : "Larry"
+}
+
+update.call(product, "iPhone");
+update.apply(product, ["iPhone"]);
+update.call(user, "Peter");
+
+```

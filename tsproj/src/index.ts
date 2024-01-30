@@ -1,5 +1,16 @@
 import UserComponent from './UserComponent';
 import Lib from './Libs';
+import User from './User';
+
+let user = new User();
+ user.age = 2; // set name() {}
+//@ts-ignore
+if(user["error"]) {
+    //@ts-ignore
+    console.log(user["error"])
+} else {
+    console.log(user.age);
+}
 let lib = new Lib();
 
 console.time("first");
