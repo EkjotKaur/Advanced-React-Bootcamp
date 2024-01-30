@@ -211,6 +211,7 @@ Keywords: "as", "is", "in"
 Type Predicate functions
 
  tsc typepredicate.ts 
+
  node typepredicate.js
 =========
 tsc lib.ts
@@ -220,7 +221,151 @@ instead:
 npx ts-node lib.ts
 
 
+===========================
 
 
 
+Recap:
+1) webpack: babel-loader, @babel/core, @babel/preset-env, @babel/preset-react 
+html-webpack-plugin
+webpack.config.js
+babel.config.js/ .babelrc / babel.config.json
+2) Typescript: string, number, boolean, any, unknown, type, interface , class
+"as" , "in" and "is" 
+HOF: functions which accept function as argument/function which returns a function
+filter, map
+
+Day 2
+-----
+
+JavaScript in TypeScript
+* react, react-dom, jquery, .... are all written in JavaScript
+
+tsproj % npm init --y
+tsproj % npm i typescript -D
+tsproj % tsc --init
+ tsproj % npm i lodash
+
+tsconfig.json
+
+"rootDir": "./src",
+ "outDir": "./dist",
+
+===========
+
+JS in TS --> types definition
+
+typings.d.ts
+declare module 'lodash' {
+    export function random(min:number, max:number): number
+}
+
+or
+
+npm i @types/lodash -D
+
+npm i react react-dom
+npm i @types/react @types/react-dom -D
+
+======================
+
+Decorators --> metadata @
+A Decorator is a special kind of declaration that can be attached to a class declaration, method, accessor, property, or parameter.
+
+* Specialization pattern
+
+class Product {
+    members
+}
+class Mobile extends Product {
+
+}
+
+class Tv extends Product {
+
+}
+
+React Components:
+class UserComponent extends Component {
+    render() {}
+ }
+
+* Decorator pattern
+Angular approach:
+```
+@Component({
+    selector:'app-user',
+    template: `
+    <div>
+        {{firstName}}
+    </div>
+    `
+})
+class UserComponent {
+    firstName:string ="";
+    age:number = 18;
+
+    onNgInit(){
+        
+    }
+}
+```
+every instance of UserComponent contains: firstName, age, selector, template
+
+<app-user> </app-user>
+
+```
+@Component({
+    selector:'app-product',
+    templateUrl: 'templates\product.html'
+    stylesUrl:['./styles.css', './product.css']
+})
+class ProductComponent {
+    title:string ="";
+    price:number = 0;
+}
+```
+=========================
+
+1) class level
+function classDecorator(constructor:Function) {}
+Example:
+function Component(constructor:Function) {}
+
+2) method level
+function methodDecorator(target:any, methodName:string, descriptor?:PropertyDescriptor){}
+
+class Demo {
+    @log
+    doTask() {
+        // code
+    }
+}
+
+let d = new Demo();
+d.doTask();
+
+3) property level
+function propertyDecorator(target:any, propertyKey:string){}
+
+function min(target:any, propertyKey:string){
+    // logic
+}
+
+```
+class User {
+    @min(5)
+    firstName:string;
+
+    @min(10)
+    address:string;
+}
+```
+4) parameter level
+function parameterDecorator(target:any, methodName:string, parameterIndex:number){}
+
+Requirement:
+ "experimentalDecorators": true, 
+
+===================
 

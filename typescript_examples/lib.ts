@@ -33,8 +33,8 @@ let evens = filter(numbers, e => e % 2 === 0);
 evens.forEach(e => console.log(e));
 
 // convert into TypeScript
-function map(data, transformFn) {
-    var result = [];
+function map<T, K>(data: T[], transformFn: (elem: T) => K): K[] {
+    var result: K[] = [];
     data.forEach(elem => {
         result.push(transformFn(elem));
     })
