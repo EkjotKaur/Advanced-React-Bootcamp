@@ -369,3 +369,7 @@ Requirement:
 
 ===================
 
+@observable
+class BookStore {
+    books:Book[] = [];
+}
