@@ -507,6 +507,7 @@ class App extends Component {
         count: 0
     }
 
+    this.state.count = 100; // 
     setCount(no) {
         this.setState({
             count: no
@@ -546,3 +547,31 @@ export default App;
 npm i react-router-dom axios bootstrap react-bootstrap @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
 
 react-specturum / react web components
+
+=========================
+
+Day 3:
+
+App and it's children can be Consumer of Context
+<ProductProvider>
+    <App />
+</ProductProvider>
+
+A and B are children, they can be Cosnumers or its Children
+<ProductProvider size="10" className="card">
+   
+</ProductProvider>
+```
+class ProductList extends Component {
+    render(): JSXElement {
+        return <ProductContext.Consumer>
+            {
+                value => {
+                    value.products.map(...)
+                }
+            }
+
+        </ProductContext.Consumer>
+    }
+}
+```
