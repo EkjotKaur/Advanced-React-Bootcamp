@@ -575,3 +575,10 @@ class ProductList extends Component {
     }
 }
 ```
+
+href ==> Server side Routing ==> Whole page is reloaded
+as={Link} ==> Client Side Routing
+
+http://localhost:3000/details/
+
+FCP --> Web Vitals
