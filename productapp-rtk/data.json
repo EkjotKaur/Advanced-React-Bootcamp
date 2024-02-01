@@ -1,0 +1,30 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "firstName": "A"
+    },
+    {
+      "id": 2,
+      "firstName": "B"
+    },
+    {
+      "id": 3,
+      "firstName": "C"
+    },
+    {
+      "firstName": "Danny",
+      "id": 4
+    },
+    {
+      "firstName": "George",
+      "id": 5
+    },
+    {
+      "firstName": "Peter",
+      "id": 6
+    }
+  ],
+  "orders": [],
+  "products": []
+}

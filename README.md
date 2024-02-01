@@ -857,3 +857,51 @@ dispatch(action) ==> thunk delegates to RootReducer --> Reducer
 
 ======
 
+UI:
+
+reducers: {
+    purchase: (state, action) => {
+        // dispatch(..)
+    },
+    clearCart: (state) => {
+
+    }
+}
+dispatch(purchase({...})); // Redux --> State
+if(state condition) {
+    dispatch(clearCart());
+}
+
+======
+
+RTK Query: instead of createAsyncThunk
+advanced data fetching, pre-fetching and caching tool
+
+npx json-server --watch data.json --port 1234
+
+```
+
+const AddCustomer = () => {
+    const [addCustomer] = useAddCustomerMutation();
+    const {refetch} = useCustomersQuery();
+    const customer = {
+        firstName: 'Peter'
+    }
+
+    const addHandler = async () => {
+        await addCustomer(customer);
+        refetch(); // API call
+    }
+
+    return <button type='button' onClick={addHandler}>Add</button>
+}
+```
+Polling:
+useCustomerQuery({
+    pollingInterval: 2000
+});
+
+====
+
+Pre-fetching
+
