@@ -653,3 +653,84 @@ let [state, dispatch] = useReducer(cartReducer, initialState);
 
 dispatch({type:'ADD_TO_CART', payload: {....}})
 
+=====================
+
+http://adobe.com/products/1 ==> Path Parameter
+useParams()
+http://amazon.com?category=mobile&page=1&size=20 ==> Query Parameter
+useSearchParams()
+
+===========================
+
+Controlled Components and Uncontrolled Components
+
+Controlled Components:
+```
+    export default function ProductForm() {
+        let [title, setTitle] = useState();
+        let [price, setPrice] = useState();
+        function submit() {
+
+        }
+        return <>
+            Title : <input type="text" 
+                onChange={(evt) => setTitle(evt.target.value)}/> <br />
+            Price : <input type="text"
+                onChange={(evt) => setPrice(evt.target.value)} /> <br />
+            <button type="button" onClick={() => sumbit()}>
+        </>
+    }
+```
+
+
+UnControlled Components:
+```
+    export default function ProductForm() {
+        let titleRef = useRef();
+        let priceRef = useRef();
+        function submit() {
+            let product = {
+                title: titleRef.current.value,
+                price: priceRef.current.value
+            }
+            //
+        }
+        return <>
+            Title : <input type="text" ref={titleRef}/> <br />
+            Price : <input type="text" ref={priceRef}/> <br />
+            <button type="button" onClick={() => sumbit()}>
+        </>
+    }
+```
+React Spectrum:
+```
+npm i @adobe/react-spectrum
+
+For Web Components
+npm i @lit/react 
+npm i @swc-react/Card
+
+import { Card } from '@swc-react/Card';
+
+<Card heading={title} subheading="JPG Photo">
+    <img
+        slot="cover-photo"
+        src={image}
+        alt="Demo Image"
+    />
+    <div slot="footer">
+        Rs. {price}
+    </div>
+</Card>
+```
+
+=======
+
+React 18:
+1) concurrency
+2) AutoBatching
+3) useDefferedValue
+useDeferredValue is a React Hook that lets you defer updating a part of the UI
+it prempts to any other high priority thread [ user interactions]
+4) useTransition()
+similar to useDefferedValue 
