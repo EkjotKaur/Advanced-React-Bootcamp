@@ -20,7 +20,7 @@ export default function ProductProvider(props: PropsType) {
     // lifecycle hooks ==> componentDidMount()
     useEffect(() => {
         axios.get("https://fakestoreapi.com/products?limit=5").then(response => {
-            setProducts(response.data);
+        setProducts(response.data);
         });
     }, []);
 
