@@ -838,3 +838,22 @@ The selector is approximately equivalent to the mapStateToProps argument to conn
 
 useDispatch() Hook:
 This hook is approximately equivalent to the mapDispatchToProps argument to connect conceptually.
+
+1) redux folder
+2) index.tsx
+3) ProductCard.tsx
+2) CartComponent.tsx
+
+======
+
+Async logic in Redux
+
+Redux is Synchronous, for Async it needs 3rd party libraries like : Thunk, Saga, ObservableJS, ...
+https://redux.js.org/tutorials/fundamentals/part-6-async-logic
+
+Thunk
+dispatch(fn) ==> thunk middleware intercepts
+dispatch(action) ==> thunk delegates to RootReducer --> Reducer
+
+======
+
