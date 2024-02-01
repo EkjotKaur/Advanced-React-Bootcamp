@@ -791,3 +791,16 @@ function mapDispatchToProps(dispatch) {
 props.addToCart({..})
 props.increment(3);
 
+====
+
+Redux Toolkit
+immerjs
+immutablejs
+======
+
+npm i @reduxjs/toolkit react-redux
+
+Remove all references to CartContext and CardProvider:
+1) index.tsx
+2) ProductCard
+3) CartComponent.tsx
