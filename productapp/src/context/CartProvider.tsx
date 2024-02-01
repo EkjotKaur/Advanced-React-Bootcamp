@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useReducer } from "react";
 import CartItem from "../model/CartItem";
 import cartReducer from "../reducer/cartReducer";
+import { useNavigate } from "react-router-dom";
 
 type ContextType = {
     products: CartItem[],
@@ -28,6 +29,7 @@ const initialState = {
 }
 
 export default function CartProvider(props: PropsType) {
+    let navigate = useNavigate();
     let [state, dispatch] = useReducer(cartReducer, initialState);
     function addToCart(item: CartItem) {
         dispatch({ type: 'ADD_TO_CART', payload: item });
@@ -38,7 +40,8 @@ export default function CartProvider(props: PropsType) {
     }
     function checkout() {
         // axios.post...
-        dispatch({ type: 'CLEAR_CART' })
+        dispatch({ type: 'CLEAR_CART' });
+        navigate('/');
     }
     return <CartContext.Provider value={{
         products: state.cartItems,
