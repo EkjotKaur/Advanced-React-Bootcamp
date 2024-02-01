@@ -734,3 +734,60 @@ useDeferredValue is a React Hook that lets you defer updating a part of the UI
 it prempts to any other high priority thread [ user interactions]
 4) useTransition()
 similar to useDefferedValue 
+
+========
+Context --> to avoid props-drill. can be used for state management for smaller application
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+https://www.youtube.com/watch?v=8pDqJVdNa44
+
+Predictable State Managment:
+1) Flux Architecture
+2) Redux
+    Advantage :
+    a) state managment --> module
+    integrate with react, Angular, Server Side apps,
+    plain vanilla JS
+    ---
+    b) Time Travel Debugging
+    c) Can be used in MicroFrontend
+3) Mobx
+
+=====================
+react-redux
+HOC connect
+
+connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
+
+state = {
+    user: {
+        avatar: '...',
+        name: '...
+    },
+    cart: {
+        cartItems: [],
+        total: 2323
+    }
+}
+Redux:
+
+function mapStateToProps(state) {
+    return {
+        profileImage: state.user.avatar,
+        products: state.cart.cartItems
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addToCart: (item) => dispatch({type:'ADD_TO_CART, payload: item}),
+        increment: (id) => dispatch({type:'INC', payload: id})
+    }
+}
+
+props.addToCart({..})
+props.increment(3);
+
