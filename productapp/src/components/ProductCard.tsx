@@ -20,9 +20,14 @@ export default function ProductCard(props: Proptype) {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
+                    <span className='left'>
                     Rs. {price}
-                    <FontAwesomeIcon color='blue' icon={faHeart} />
+                    </span>
+                   <span className='right px-2'>
+                   <FontAwesomeIcon color='blue' icon={faHeart} />
                     <FontAwesomeIcon color='red' icon={faShoppingCart} />
+                   </span>
+                    
                 </Card.Footer>
             </Card>
         </div>

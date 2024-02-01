@@ -582,3 +582,6 @@ as={Link} ==> Client Side Routing
 http://localhost:3000/details/
 
 FCP --> Web Vitals
+
+
+Day 4
