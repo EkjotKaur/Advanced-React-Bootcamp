@@ -832,3 +832,9 @@ export const counterSlice = createSlice({
   },
 })
 ```
+
+useSelector() Hook:
+The selector is approximately equivalent to the mapStateToProps argument to connect conceptually.
+
+useDispatch() Hook:
+This hook is approximately equivalent to the mapDispatchToProps argument to connect conceptually.
