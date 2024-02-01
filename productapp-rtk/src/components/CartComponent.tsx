@@ -8,12 +8,12 @@ export default function CartComponent() {
 
         <div className="row">
             <div className="col-md-10">&nbsp;</div>
-            <div className="col-md-2">{total}</div>
+            <div className="col-md-2"></div>
         </div>
         <div className="row">
             <div className="col-md-10">&nbsp;</div>
             <div className="col-md-2">
-                <Button onClick={() => checkout()}>Checkout</Button>
+                <Button>Checkout</Button>
             </div>
         </div>
     </Container>

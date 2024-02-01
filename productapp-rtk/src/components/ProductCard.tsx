@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Card from 'react-bootstrap/Card';
-
 import Product from '../model/Product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
