@@ -1,7 +1,7 @@
 const webpack = require('webpack'); // CommonJS module system
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const  HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = function (__env, argv) {
     // if(argv.mode === 'production') {
 
@@ -40,6 +40,17 @@ module.exports = function (__env, argv) {
         ],
         devServer: {
             port: 1234
+        }, optimization: {
+            runtimeChunk: 'single',
+            splitChunks: {
+                cacheGroups: {
+                    vendor: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all'
+                    }
+                }
+            }
         }
     }
 }

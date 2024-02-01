@@ -584,4 +584,72 @@ http://localhost:3000/details/
 FCP --> Web Vitals
 
 
+Recap:
+useState()
+Context --> remove props-drill
+useContext()
+useEffect()
+bootstrap/tailswind/zurb/balma
+react-router-dom --> SPA
+index.html --> many views
+lazy() and Suspense
+
+https://createapp.dev/webpack
+
 Day 4
+Hooks:
+1) useState()
+2) useEffect()
+3) useContext()
+4) useReducer() 
+use this instead of useState() if
+a) conditionally mutate the state
+b) mutation depends on previous state
+
+Example:
+```
+State:
+{
+    count: 100
+}
+
+{
+    cartItems: [],
+    total : 0
+}
+ADD_TO_CART, INCREMENT, DECREMENT, CLEAR_CART
+
+Case 1: INCREMENT by 10
+{
+    count: 110
+}
+Case 2: DECREMENT
+{
+    count: 109
+}
+case 3: RESET
+{
+    count: 0
+}
+```
+Requirements for useReducer()
+1) we need Action Object
+{
+    type: 'INCREMENT',
+    payload?: 10
+}
+2) reducer function
+(state, action) => new state;
+returned new_state will update previous "state"
+3) useReducer
+
+const initialState = {
+    cartItems: [],
+    total: 0
+}
+
+let [state, dispatch] = useReducer(cartReducer, initialState);
+
+
+dispatch({type:'ADD_TO_CART', payload: {....}})
+
