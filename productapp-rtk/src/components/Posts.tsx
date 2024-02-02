@@ -2,14 +2,16 @@ import React, { useCallback, useState } from 'react'
 import { useListPostsQuery, usePrefetch } from '../redux/api/postsApi';
 
 export default function Posts() {
+    console.log("loaded...")
     const [page, setPage] = useState(0);
     const { data: posts, isLoading } = useListPostsQuery(page);
     const prefetchPage = usePrefetch('listPosts');
 
-    const prefetchNext = useCallback(() => {
-        prefetchPage(page + 1);
-    }, [prefetchPage, page]);
+    // const prefetchNext = useCallback(() => {
+    //     prefetchPage(page + 1);
+    // }, [prefetchPage, page]);
 
+    const prefetchNext = () => prefetchPage(page + 1);
     return (
         <>
 

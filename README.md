@@ -907,5 +907,73 @@ Pre-fetching
 
 =================
 
-Mobx and MST
 
+Recap:
+Predictable State Managment using REDUX
+* Store --> Single Store per redux module
+* State resides in Store
+* actions are dispatched to store, store passes state and action to root reducer
+* Root Reducer passes state, action to each and every reducers
+* Any reducer interested in action type, clones the state, mutates and returns new state
+* Store updates the state
+* mapStateToProps() React View Component can subscribe for state changes
+* mapDispatchToProps() used to dispatch actions to store
+
+RTK --> redux toolkit simplifies using Redux
+* createSlice() --> to define actions and reducers in one place
+* RTK handles immutable collections using 3rd party library like immer.js
+reducers:{}
+* createAsyncThunk() ==> Thunk middleware for Async action dispatch
+dispatch(fetchCustomers())
+fetchCustomers.pending, fetchCustomers.fullfilled, fetchCustomers.rejected
+extraReducers: {}
+
+* createApi() ---> RTK Query
+caching, pooling, pre-fetching
+generates hooks for every endpoint
+
+* useCallbackHook
+
+function SomeComponent() {
+    let [state, setState] = useState();
+    const fn = () => {
+        // code
+    }
+
+    function fn2() {
+
+    }
+}
+
+Whenever state changes, component re-loads and all functions are re-loaded.
+
+
+let MemoCardComponent = React.memo(CardComponent); // memoize CardComponent
+// store state and props of CardComponents in Cache
+// memo() checks new state and props with cached data
+// decide if it needs to render or not
+
+
+Day 5
+
+MobX
+Cleaner, simpler alternate to Redux
+Observer Observable design pattern
+
+State:
+    * Observable
+    * Properties you want to observe or change over time
+    * similar to useState()
+
+Action:
+    * functions that changes observable state
+    * similar to useState's setter function
+
+Derivations:
+    * anything that can be derived from observable state
+    1) Computed Valies
+    2) Reactions
+
+--> Action --> updates Observable State --> notify Computed Values and reactions
+
+npm i mobx
