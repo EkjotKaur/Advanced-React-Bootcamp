@@ -995,3 +995,96 @@ index.tsx
 ProductCard.tsx
 
 export default observer(CartComponent);
+export default observer(NavbarComponent);
+
+===
+
+1) Without Decorators:
+
+class CartStore {
+    cart:CartItem[]= [];
+    constructor() {
+        makeObservable(this, {
+            cart:observable,
+            addToCart: action,
+            count: computed
+        });
+    }
+///
+};
+
+2) Without Decorators:
+ makeAutoObservable ==> fields --> observable, methods becomes action, getters becomes computed
+class CartStore {
+    cart:CartItem[]= [];
+    constructor() {
+        makeAutoObservable(this);
+    }
+///
+};
+
+===========
+
+Mobx State Tree
+MobX-State-Tree (also known as MST) is a state container system built on MobX
+* MST provides centralized stores for your data
+* runtime type checking
+* Every update to your data is traced and you can quickly generate snapshots of your state at any time
+* Using snapshots, you can do time-travel debugging 
+
+MST
+1) types --> actions, views [computed values]
+```
+
+export const Book = types.model("Book", {
+    id: types.identifier,
+    name: types.string,
+    author: types.string,
+    series_t: types.optional(types.string, ""),
+    sequence_i: types.number,
+    genre_s: types.string,
+    pages_i: types.number,
+    price: types.number,
+    isAvailable: true
+})
+
+export const BookStore = types
+    .model("BookStore", {
+        isLoading: true,
+        books: types.array(Book)
+    })
+    .views((self) => ({
+        get shop() {
+            return getParent(self)
+        },
+        get sortedAvailableBooks() {
+            return sortBooks(values(self.books))
+        }
+    }))
+    .actions((self) => {
+        function markLoading(loading) {
+            self.isLoading = loading
+        }
+
+        function updateBooks(json) {
+            values(self.books).forEach((book) => (book.isAvailable = false))
+            json.forEach((bookJson) => {
+                self.books.put(bookJson)
+                self.books.get(bookJson.id).isAvailable = true
+            })
+        }
+
+        return {
+            updateBooks,
+            loadBooks
+        }
+    })
+
+function sortBooks(books) {
+    return books
+        .filter((b) => b.isAvailable)
+        .sort((a, b) => (a.name > b.name ? 1 : a.name === b.name ? 0 : -1))
+}
+```
+copy productapp-mobx --> productapp-mst
+npm i mobx mobx-state-tree mobx-react-lite
