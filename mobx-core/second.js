@@ -7,7 +7,6 @@ class LineItem {
         makeObservable(this, {
             price: observable,
             amount: observable,
-            count: observable,
             total: computed
         });
         this.price = price;

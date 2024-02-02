@@ -977,3 +977,13 @@ Derivations:
 --> Action --> updates Observable State --> notify Computed Values and reactions
 
 npm i mobx
+
+productapp-mobx --> all files from productapp-rtk
+* delete redux folder
+* remove entries of redux in "index.tsx"
+* remove Customers.tsx and Posts.tsx
+* remove @redux-toolkit and react-redux entries
+
+productapp-mobx %  npm i mobx mobx-logger mobx-react-lite
+
+mobx-react-lite --> helps make react components as Observer
