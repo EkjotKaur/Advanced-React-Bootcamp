@@ -7,6 +7,7 @@ class LineItem {
         makeObservable(this, {
             price: observable,
             amount: observable,
+            count: observable,
             total: computed
         });
         this.price = price;
@@ -17,6 +18,7 @@ class LineItem {
         console.log("Computing");
         return this.price * this.amount;
     }
+
 }
 
 const order = new LineItem(4);
