@@ -6,11 +6,11 @@ import './index.css';
 import App from './App';
 import ProductProvider from './context/ProductProvider';
 import { BrowserRouter } from 'react-router-dom';
-import cartStore from './mobx/CartStore';
+
 import { enableLogging } from 'mobx-logger'
 import { autorun, reaction } from 'mobx';
-export const CartContext = createContext(cartStore); // no need for Context Provider
 
+import { RootStoreContext, rootStore } from './mobx/models/Root'
 enableLogging();
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,8 +20,11 @@ root.render(
 
   <BrowserRouter>
     <ProductProvider>
-      <App />
-    </ProductProvider>
+      <RootStoreContext.Provider value={rootStore}>
+        <App />
+      </RootStoreContext.Provider>
+
+    </ProductProvider>  
   </BrowserRouter>
 
 
@@ -30,9 +33,5 @@ root.render(
 autorun(() => {
 
 })
-
-reaction(() => cartStore.cart, () => {
-
-});
 
 
