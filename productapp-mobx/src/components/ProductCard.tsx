@@ -5,16 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/features/CartSlice';
-import { useAppDispatch } from '../redux/store';
+import { CartContext } from '..';
+import { CartItem } from '../mobx/CartStore';
+
 type Proptype = {
     product: Product
 }
 export default function ProductCard(props: Proptype) {
-
+    let cartStore = useContext(CartContext);
     let { id, title, image, price, description } = props.product;
-    const dispatch = useAppDispatch();
     return (
         <div className='col-sm-6 col-md-4 my-2'>
             <Card style={{ width: '18rem' }}>
@@ -35,15 +34,14 @@ export default function ProductCard(props: Proptype) {
                         <FontAwesomeIcon color='blue' icon={faHeart} />
                         <FontAwesomeIcon
                             color='red' icon={faShoppingCart}
-                            onClick={() => dispatch(addToCart({
+                            onClick={() => cartStore.addToCart(new CartItem(
                                 id,
                                 title,
+                                price,
                                 description,
                                 image,
                                 price,
-                                quantity: 1,
-                                amount: price
-                            }))}
+                                1))}
                         />
                     </span>
 

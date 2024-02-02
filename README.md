@@ -987,3 +987,9 @@ productapp-mobx --> all files from productapp-rtk
 productapp-mobx %  npm i mobx mobx-logger mobx-react-lite
 
 mobx-react-lite --> helps make react components as Observer
+
+"experimentalDecorators": true
+
+mobx/CartStore.ts
+index.tsx
+ProductCard.tsx
