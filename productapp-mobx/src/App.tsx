@@ -7,8 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import Details from './components/Details';
 import Default from './components/Default';
-import Customers from './components/Customers';
-import Posts from './components/Posts';
+
 
 const CartComponent = lazy(() => import('./components/CartComponent'));
 const ProductForm = lazy(() => import('./components/ProductForm'));
@@ -32,8 +31,7 @@ function App() {
               <ProductForm />
             </Suspense>} />
           <Route path="/details/:id" element={<Details />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/posts" element={<Posts />} />
+
           <Route path="/" element={<ProductList />} />
           <Route path="*" element={<Default />} />
         </Routes>

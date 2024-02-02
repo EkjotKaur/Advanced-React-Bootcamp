@@ -1,25 +1,27 @@
 
 import { Button, Container } from "react-bootstrap";
 import CartRow from "./CartRow";
-import { useAppDispatch, useAppSelector } from "../redux/store";
-import { clearCart } from "../redux/features/CartSlice";
+import { useContext } from "react";
+import { CartContext } from "..";
+import { observer } from "mobx-react-lite";
 
-export default function CartComponent() {
-    let { cartItems, total } = useAppSelector(state => state.cart);
-    let dispatch = useAppDispatch();
+function CartComponent() {
+    let cartStore = useContext(CartContext);
     return <Container>
         {
-            cartItems.map(product => <CartRow key={product.id} product={product} />)
+            cartStore.cart.map(product => <CartRow key={product.id} product={product} />)
         }
         <div className="row">
             <div className="col-md-10">&nbsp;</div>
-            <div className="col-md-2">{total}</div>
+            <div className="col-md-2">{cartStore.total}</div>
         </div>
         <div className="row">
             <div className="col-md-10">&nbsp;</div>
             <div className="col-md-2">
-                <Button onClick={() => dispatch(clearCart())}>Checkout</Button>
+                <Button>Checkout</Button>
             </div>
         </div>
     </Container>
 }
+
+export default observer(CartComponent);

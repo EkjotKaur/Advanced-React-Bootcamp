@@ -993,3 +993,5 @@ mobx-react-lite --> helps make react components as Observer
 mobx/CartStore.ts
 index.tsx
 ProductCard.tsx
+
+export default observer(CartComponent);
