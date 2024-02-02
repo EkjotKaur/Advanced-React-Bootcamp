@@ -11,6 +11,7 @@ import { enableLogging } from 'mobx-logger'
 import { autorun, reaction } from 'mobx';
 
 import { RootStoreContext, rootStore } from './mobx/models/Root'
+
 enableLogging();
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,7 +25,7 @@ root.render(
         <App />
       </RootStoreContext.Provider>
 
-    </ProductProvider>  
+    </ProductProvider>
   </BrowserRouter>
 
 

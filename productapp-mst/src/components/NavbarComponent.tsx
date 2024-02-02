@@ -2,13 +2,13 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import { CartContext } from '..';
+import { RootStoreContext } from '../mobx/models/Root';
 import { useContext } from 'react';
 import { Badge } from 'react-bootstrap';
 import { observer } from 'mobx-react-lite';
 
 function NavbarComponent() {
-    let cartStore = useContext(CartContext);
+    let store = useContext(RootStoreContext);
     return <Navbar bg="dark" data-bs-theme="dark">
 
         <Navbar.Brand href="#home">Acme</Navbar.Brand>
@@ -16,7 +16,7 @@ function NavbarComponent() {
             <Nav.Link as={Link} to='/products'>Products</Nav.Link>
             <Nav.Link as={Link} to='/cart'>
                 Cart
-                <Badge>{cartStore.count}</Badge>
+                <Badge>{store?.cart.quantity}</Badge>
             </Nav.Link>
             <Nav.Link as={Link} to='/customers'>Customers</Nav.Link>
             <Nav.Link as={Link} to='/posts'>Posts</Nav.Link>

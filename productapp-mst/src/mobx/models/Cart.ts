@@ -15,10 +15,12 @@ export const CartItem = types.model({
 }));
 
 export const Cart = types.model({
-    items: types.optional(types.array(CartItem), [])
+    items: types.optional(types.array(CartItem), []),
+    quantity: types.number
 }).actions(self => ({
     addToCart(item: SnapshotIn<typeof CartItem>) {
         self.items.push(item);
+        self.quantity++
     },
     increment(item: SnapshotIn<typeof CartItem>) {
 

@@ -9,7 +9,7 @@ const RootModel = types.model({
 })
 
 let initalState = RootModel.create({
-    cart: { items: [] }
+    cart: { items: [], quantity: 0 }
 })
 
 

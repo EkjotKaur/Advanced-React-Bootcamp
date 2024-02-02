@@ -2,18 +2,19 @@
 import { Button, Container } from "react-bootstrap";
 import CartRow from "./CartRow";
 import { useContext } from "react";
-import { CartContext } from "..";
+
 import { observer } from "mobx-react-lite";
+import { RootStoreContext } from "../mobx/models/Root";
 
 function CartComponent() {
-    let cartStore = useContext(CartContext);
+    let store = useContext(RootStoreContext);
     return <Container>
         {
-            cartStore.cart.map(product => <CartRow key={product.id} product={product} />)
+            store?.cart.items.map(product => <CartRow key={product.id} product={product} />)
         }
         <div className="row">
             <div className="col-md-10">&nbsp;</div>
-            <div className="col-md-2">{cartStore.total}</div>
+            <div className="col-md-2">{store?.cart.total}</div>
         </div>
         <div className="row">
             <div className="col-md-10">&nbsp;</div>

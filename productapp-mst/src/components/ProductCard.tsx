@@ -5,14 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import { Link } from 'react-router-dom';
-import { CartContext } from '..';
-import { CartItem } from '../mobx/CartStore';
+import { RootStoreContext } from '../mobx/models/Root';
 
 type Proptype = {
     product: Product
 }
 export default function ProductCard(props: Proptype) {
-    let cartStore = useContext(CartContext);
+    let store = useContext(RootStoreContext);
     let { id, title, image, price, description } = props.product;
     return (
         <div className='col-sm-6 col-md-4 my-2'>
@@ -34,14 +33,15 @@ export default function ProductCard(props: Proptype) {
                         <FontAwesomeIcon color='blue' icon={faHeart} />
                         <FontAwesomeIcon
                             color='red' icon={faShoppingCart}
-                            onClick={() => cartStore.addToCart(new CartItem(
+                            onClick={() => store?.cart.addToCart({
                                 id,
                                 title,
-                                price,
-                                description,
                                 image,
                                 price,
-                                1))}
+                                description,
+                                quantity: 1,
+                                amount: price
+                            })}
                         />
                     </span>
 
