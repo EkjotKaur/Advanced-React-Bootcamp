@@ -905,3 +905,7 @@ useCustomerQuery({
 
 Pre-fetching
 
+=================
+
+Mobx and MST
+
